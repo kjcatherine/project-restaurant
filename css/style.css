@@ -1,0 +1,792 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+  overflow-x: hidden;
+}
+/******************************************
+/* LAYOUT
+/**
+*****************************************/
+header {
+}
+nav,
+nav div > ul,
+.cart ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav > div ul {
+  flex-basis: 60%;
+}
+
+.cart ul {
+  flex-basis: 40%;
+}
+nav > div ul li {
+  padding: 0 2rem;
+}
+.cart li a {
+  padding: 1.875rem;
+  position: relative;
+  right: 18.75rem;
+}
+.cart ul,
+nav > div ul {
+  list-style-type: none;
+  font-weight: 500;
+  padding: 0.375rem 0.625rem;
+}
+
+nav > div ul li a,
+.cart li a {
+  text-decoration: none;
+  color: rgb(34, 34, 34);
+}
+nav > div ul li a {
+  position: relative;
+  right: 3.4375rem;
+}
+header {
+  background-image: url("../images/strawberry.png");
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.input,
+fa-search,
+select,
+option {
+  display: flex;
+}
+.input {
+  position: relative;
+  bottom: 20px;
+}
+.input .fa-search {
+  padding: 5px 0 0 5px;
+  width: 2%;
+  border: solid rgb(204, 211, 225) 1px;
+  height: 30px;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+.input input {
+  width: 20%;
+  background: none;
+  border: none;
+  padding: 0;
+  height: 30px;
+  padding-left: 5px;
+  border: solid rgb(204, 211, 225) 1px;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  caret-color: rgb(255, 134, 48);
+}
+.input input::placeholder {
+  color: rgb(95, 96, 99);
+  padding: 0;
+}
+select {
+  text-align: center;
+  width: 7%;
+  height: 30px;
+  padding: 0;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  color: rgb(255, 255, 255);
+  background: rgb(255, 134, 48);
+  outline: none;
+}
+select:hover {
+  background: rgb(255, 168, 93);
+}
+
+option {
+  padding: 0;
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+}
+.icons,
+.icons > div a {
+  display: flex;
+}
+.icons > div a {
+  padding: 10px;
+  text-decoration: none;
+  color: rgb(34, 34, 34);
+  font-size: 1.2rem;
+}
+.icons > div a span {
+  padding: 0 3px;
+}
+.fa-facebook,
+.fa-instagram,
+.fa-twitter {
+  color: orangered;
+}
+.icons {
+  position: relative;
+  bottom: 10px;
+  left: -10px;
+}
+.fa-bars,
+.fa-times {
+  display: none;
+}
+.header-image {
+  position: relative;
+  left: 80px;
+  bottom: 10px;
+}
+@media all and (max-width: 500px) {
+  .header-image {
+    left: 10px;
+    bottom: 10px;
+  }
+  h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .input input {
+    width: 40%;
+  }
+  select {
+    width: 18%;
+  }
+  .input .fa-search {
+    width: 5%;
+  }
+  .icons > div a {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .icons > div a span {
+    padding: 0 3px;
+  }
+
+  .icons {
+    position: relative;
+    left: -10px;
+    bottom: 10px;
+  }
+
+  .cart li a {
+    right: 0rem;
+  }
+  nav .fa-bars,
+  nav .fa-times {
+    display: block;
+    color: #fff;
+    margin: 10px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  nav .fa-bars {
+    color: rgb(34, 34, 34);
+  }
+  /*.fa-bars {
+    display: block;
+    color: rgb(34, 34, 34);
+    font-size: 1.25rem;
+    position: absolute;
+    top: 1.2rem;
+    left: 1.5rem;
+  }
+  .fa-times {
+    display: block;
+    padding-left: 10px;
+  }*/
+  nav > div ul {
+    flex-direction: column;
+  }
+  .nav-modal {
+    position: absolute;
+    background: rgb(250, 107, 55);
+    height: 49vh;
+    width: 200px;
+    top: 0;
+    color: white;
+    /* we changed right from 0 to -200px so the menu on the small screen can close*/
+    right: 0px;
+    left: -200px;
+    text-align: left;
+    z-index: 2;
+    transition: 1s;
+  }
+  nav > div ul li {
+    padding: 10px;
+    position: relative;
+    left: 50px;
+  }
+  nav > div ul li a {
+    color: white;
+  }
+}
+@media (min-width: 501px) and (max-width: 850px) {
+  .header-image {
+    left: 30px;
+    bottom: 10px;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+
+  .input input {
+    width: 40%;
+  }
+  select {
+    width: 20%;
+  }
+  .input .fa-search {
+    width: 5%;
+  }
+  .icons > div a {
+    padding: 7px;
+    font-size: 1rem;
+  }
+  .icons > div a span {
+    padding: 0 3px;
+  }
+
+  .icons {
+    position: relative;
+    left: -5px;
+    bottom: 10px;
+  }
+  .cart ul {
+    position: relative;
+    right: 80%;
+  }
+  .cart ul li {
+    padding: 0 2rem;
+  }
+  .cart li a {
+    right: 0;
+    left: 0px;
+  }
+  .fa-bars {
+    display: block;
+    color: white;
+    font-size: 1.25rem;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.9rem;
+  }
+  .fa-times {
+    display: block;
+    padding-left: 10px;
+  }
+  nav > div ul {
+    flex-direction: column;
+  }
+  .nav-modal {
+    position: absolute;
+    background: rgb(250, 107, 55);
+    height: 55vh;
+    width: 200px;
+    top: 0;
+    color: white;
+    /* we changed right from 0 to -200px so the menu on the small screen can close*/
+    right: -200px;
+    text-align: left;
+    z-index: 2;
+    transition: 1s;
+  }
+  nav > div ul li {
+    padding: 10px;
+    margin: 0 10px;
+    position: relative;
+    left: 100px;
+  }
+  nav > div ul li a {
+    color: white;
+  }
+}
+@media (min-width: 851px) and (max-width: 1120px) {
+  .cart li a {
+    padding: 1.875rem;
+    position: relative;
+    right: 13rem;
+  }
+  .cart ul,
+  nav > div ul {
+    padding: 0 0 0 10px;
+    position: relative;
+    top: 14px;
+  }
+
+  nav > div ul li {
+    padding: 0 1.5rem;
+  }
+  .header-image {
+    left: 40px;
+    bottom: 10px;
+  }
+  .input input {
+    width: 30%;
+  }
+  select {
+    width: 15%;
+  }
+  .input .fa-search {
+    width: 5%;
+  }
+
+  .icons {
+    position: relative;
+    left: -5px;
+    bottom: 10px;
+  }
+}
+
+/* About section*/
+
+.about {
+  background-image: url("../images/8ceebb40-4fd3-40cd-9ac3-99410c55a66a.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px;
+}
+
+.about div {
+  margin: 0 20% 0 30%;
+  word-wrap: break-word;
+  position: relative;
+  left: 9.375rem;
+  top: 0rem;
+}
+
+.about h2 {
+  color: rgb(34, 34, 34);
+  font-size: 3rem;
+  position: relative;
+  top: 1.25rem;
+}
+.about span {
+  position: relative;
+  top: 2rem;
+  color: orangered;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.about p {
+  line-height: 1.5rem;
+}
+.icon-one {
+  background-color: orangered;
+  width: 10rem;
+  border-radius: 5px;
+  padding: 10px;
+}
+.icon-one a {
+  text-decoration: none;
+  color: white;
+}
+
+@media all and (max-width: 500px) {
+  .about {
+    padding: 20px;
+  }
+  .about div {
+    margin: 0;
+    left: 0.5rem;
+  }
+  .about h2 {
+    font-size: 2rem;
+  }
+
+  .icon-one {
+    width: 7rem;
+    padding: 5px;
+  }
+}
+@media (min-width: 501px) and (max-width: 850px) {
+  .about div {
+    margin: 0;
+    left: 0.5rem;
+  }
+  .about h2 {
+    font-size: 2.5rem;
+  }
+  .about p {
+  }
+  .icon-one {
+  }
+}
+/* order section */
+
+.order-contain {
+  text-align: center;
+  padding: 50px 30px;
+  width: 100%;
+  background: rgb(239, 245, 246);
+}
+.menu {
+  border-bottom: 1px solid rgb(88, 87, 87);
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+  bottom: 30px;
+}
+.menu a {
+  text-decoration: none;
+  color: rgb(100, 98, 98);
+  padding: 2.5rem;
+}
+.menu a:hover {
+  color: rgb(255, 134, 48);
+  transition: 1s;
+}
+.order-text {
+  position: relative;
+  bottom: 0px;
+}
+.order-text h2 {
+  font-size: 2.5rem;
+  position: relative;
+  bottom: 20px;
+}
+.order-text span {
+  color: orangered;
+  font-size: 1rem;
+  position: relative;
+  top: 0rem;
+}
+.order-contain a.active {
+  color: rgb(255, 134, 48);
+}
+.food-images,
+.food-images-two {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  bottom: 40px;
+}
+
+.food-images img,
+.food-images-two img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 15%;
+  width: 15%;
+  flex-wrap: wrap;
+  margin: 0.5rem;
+  height: 15rem;
+  position: relative;
+  top: 2.5rem;
+}
+@media all and (max-width: 500px) {
+  .menu {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .menu a {
+    padding: 0.2rem;
+    width: 20%;
+  }
+  .food-images,
+  .food-images-two {
+    margin: 0;
+  }
+  .food-images img,
+  .food-images-two img {
+    flex-basis: 40%;
+    width: 30%;
+    flex-wrap: nowrap;
+    height: 10rem;
+  }
+}
+@media (min-width: 501px) and (max-width: 850px) {
+  .menu {
+    width: 80%;
+  }
+  .menu a {
+    padding: 0.6rem;
+  }
+  .food-images,
+  .food-images-two {
+    margin: 0;
+  }
+  .food-images img,
+  .food-images-two img {
+    flex-basis: 40%;
+    width: 30%;
+    flex-wrap: nowrap;
+    height: 10rem;
+  }
+}
+@media (min-width: 851px) and (max-width: 1120px) {
+  .menu {
+    width: 70%;
+  }
+  .menu a {
+    padding: 1rem;
+  }
+  .food-images img,
+  .food-images-two img {
+    flex-basis: 20%;
+    width: 20%;
+  }
+}
+/*booking section*/
+.book-contain {
+  width: 100%;
+  background-color: rgb(231, 235, 235);
+  padding-top: 40px;
+}
+.opening-hours {
+  position: relative;
+
+  text-align: center;
+}
+.opening-span {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  bottom: 40px;
+}
+.opening-hours h2 {
+  font-size: 2.5rem;
+  position: relative;
+  bottom: 1.25rem;
+}
+.opening-hours span {
+  color: orangered;
+  font-size: 1rem;
+}
+
+.call-btn {
+  border: 1px solid orangered;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  bottom: 30px;
+}
+.opening-hours a {
+  position: relative;
+  top: 3px;
+  color: orangered;
+}
+.opening-hours p {
+  position: relative;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  bottom: 1.5625rem;
+  color: orangered;
+}
+.opening-hours .call-span {
+  position: relative;
+  bottom: 0.8125rem;
+  color: rgb(88, 87, 87);
+}
+.span-one p,
+.span-two p {
+  font-size: 1rem;
+  color: rgb(34, 34, 34);
+}
+
+.span-one h2,
+.span-two h2 {
+  font-size: 2.3rem;
+  color: rgb(39, 39, 39);
+  position: relative;
+  bottom: 20px;
+  font-weight: 600;
+}
+
+.video {
+  width: 70%;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  bottom: 50px;
+}
+.video img {
+  width: 100%;
+  height: 100%;
+}
+@media all and (max-width: 500px) {
+  .opening-span {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .span-two {
+    position: relative;
+    bottom: 40px;
+  }
+  .span-one h2,
+  .span-two h2 {
+    font-size: 2rem;
+    bottom: 20px;
+  }
+  .span-one p,
+  .span-two p {
+    text-align: center;
+  }
+  .opening-hours h2 {
+    font-size: 2rem;
+  }
+  .video {
+    width: 90%;
+    bottom: 100px;
+  }
+  .video img {
+    height: 80%;
+  }
+  .book-contain {
+    height: 50rem;
+  }
+}
+@media (min-width: 501px) and (max-width: 650px) {
+  .book-contain {
+    height: 54rem;
+  }
+  .opening-span {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .span-two {
+    position: relative;
+    bottom: 60px;
+  }
+  .span-one p,
+  .span-two p {
+    text-align: center;
+  }
+  .video {
+    width: 90%;
+    bottom: 100px;
+  }
+  .video img {
+    height: 80%;
+  }
+}
+@media (min-width: 651px) and (max-width: 1120px) {
+  .span-one h2,
+  .span-two h2 {
+    font-size: 2rem;
+  }
+  .video {
+    width: 80%;
+    bottom: 50px;
+  }
+}
+/*Testimonial section */
+.testimonial {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: 4rem;
+}
+.testimonial span {
+  font-size: 1rem;
+  color: orangered;
+}
+.testimonial h2 {
+  font-size: 2rem;
+  position: relative;
+  bottom: 1.2rem;
+  color: rgb(63, 63, 63);
+}
+.testimonial img {
+  position: relative;
+  bottom: 2rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+.testimonial h3 {
+  color: rgb(58, 57, 57);
+  position: relative;
+  bottom: 3rem;
+  font-size: 1.6rem;
+}
+.testimonial p {
+  color: rgb(58, 57, 57);
+  position: relative;
+  bottom: 50px;
+  font-size: 0.95rem;
+}
+.art-director {
+  font-size: 2rem;
+  color: orangered;
+  position: relative;
+  bottom: 4rem;
+}
+.five-star a {
+  padding: 3px;
+  color: orange;
+  position: relative;
+  bottom: 3.125rem;
+}
+.testimonial .dots {
+  float: left;
+  width: 100%;
+}
+.fa-circle {
+  color: rgb(255, 191, 67);
+  font-size: 0.5rem;
+}
+.dots {
+  text-align: center;
+}
+.fa-circle a.active {
+  font-size: 1rem;
+  color: orange;
+}
+@media all and (max-width: 500px) {
+  .testimonial p {
+    margin: 0 6px;
+  }
+  .dots {
+    position: relative;
+    top: 20px;
+  }
+}
+@media (min-width: 501px) and (max-width: 1120px) {
+  .testimonial p {
+    margin: 0 6px;
+  }
+  .dots {
+    position: relative;
+    top: 20px;
+  }
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
